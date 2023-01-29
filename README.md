@@ -29,7 +29,7 @@ Additionally, personal branding is essential to evolve across my career.
 
 #### FastAPI
 
-#### Data Analitics & Databases
+#### Data Analitics and Databases
 
 ### Matlab
 
@@ -37,8 +37,20 @@ Additionally, personal branding is essential to evolve across my career.
 
 ### Electronics and Embedded systems
 
-### C & C++
+### C and C++
+
+#### C++
+
+| About        | Repository README           | Repository  |
+| ------------- |:-------------:| :-----:|
+| Setting up my C++ Windows developing Environment | [README.md](./C%20and%20C%2B%2B/C%2B%2B/C%2B%2B%20Programming%20Course%20-%20Beginner%20to%20Advanced/README.md#setting-up-my-c++windows-developing-environment) | [repo](./C%20and%20C%2B%2B/C%2B%2B/C%2B%2B%20Programming%20Course%20-%20Beginner%20to%20Advanced/) |
 
 ### Rust
 
 ### Golang
+
+### Git
+
+| About        | Repository README           | Repository  |
+| ------------- |:-------------:| :-----:|
+| New GitHub Repository | [README.md](./Git/Create_New_GitHub_repo.md#new-empty-repositorie) | [repo](./Git/) |
