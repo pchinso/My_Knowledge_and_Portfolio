@@ -8,6 +8,24 @@ Learning material from video : C++ Programming Course - Beginner to Advanced (fr
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8jLOx1hD3_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## Some extracted pills
+
+### Setting up my C++ Windows developing Environment
+
+1. Install C++ compilers
+
+   1. [GCC at  https://winlibs.com](<https://winlibs.com>)
+      1. Extract to C:\mingw64
+      2. Add C:\mingw64\bin to windows system system enviroment path
+         1. Edit system system enviroment variables **Path**
+         2. Add Path **C:\mingw64\bin**
+   2. [Microsoft Visual Studio Community](<https://visualstudio.microsoft.com/es/vs/community/>)
+
+2. Configure VScode for C/C++ [steps](<https://youtu.be/8jLOx1hD3_o?t=1775>)
+   1. Install C/C++ extension
+   2. Create a C++ Windows project Template
+      1. Configure task.json to compile on VScode
+
 ### Course contend
 
 17 feb 2022
@@ -26,7 +44,7 @@ Learn modern C++ 20 programming in this comprehensive course.
 (0:04:32) [Chapter 1](https://www.youtube.com/watch?v=8jLOx1hD3_o&t=272s): Setting up the tools
 Tools
 Installing C++ Compilers on Windows
-Installing VS Code on Windows
+Installing VS Code on Windows [Template project configuration](<https://youtu.be/8jLOx1hD3_o?t=1714>)
 Configuring Visual Studio Code for C++ on Windows
 Installing C++ Compilers on Linux
 Installing Visual Studio Code on Linux
@@ -203,21 +221,3 @@ Dynamic casts
 Polymorphic Functions and Destructors
 Pure virtual functions and abstract classes
 Abstract Classes as Interfaces
-
-## Some extracted pills
-
-### Setting up my C++ Windows developing Environment
-
-1. Install C++ compilers
-
-   1. [GCC at  https://winlibs.com](<https://winlibs.com>)
-      1. Extract to C:\mingw64
-      2. Add C:\mingw64\bin to windows system system enviroment path
-         1. Edit system system enviroment variables **Path**
-         2. Add Path **C:\mingw64\bin**
-   2. [Microsoft Visual Studio Community](<https://visualstudio.microsoft.com/es/vs/community/>)
-
-2. Configure VScode for C/C++ [steps](<https://youtu.be/8jLOx1hD3_o?t=1775>)
-   1. Install C/C++ extension
-   2. Create a C++ Windows project Template
-      1. Configure task.json to compile on VScode
