@@ -12,6 +12,7 @@
 # Defining Variables
 
 NAME="pChinso"
+NAMETOREMOVE = "Remove"
 
 # Accessing Values
 
@@ -23,7 +24,7 @@ NAME="pChinso"
 readonly NAME # After a variable is marked read-only, its value cannot be changed.
 
 # Unsetting Variables to remove the variable from the list of variables
-unset NAME
+unset NAMETOREMOVE
 
 # Variable Types
 
@@ -42,6 +43,28 @@ unset NAME
 # that is set by the shell and is required by the shell in order to function correctly. 
 # Some of these variables are environment variables whereas others are local variables.
 
+echo "# Shell Variables"
+
+echo "For example, the $ character represents the process ID number, or PID, of the current shell: $$ "
+
+echo "\$0 The filename of the current script. $0 "
+
+echo -e "\$1 These variables correspond to the arguments with which a script was invoked." 
+echo -e "Here n is a positive decimal number corresponding to the position of an argument \n(the first argument is $1, the second argument is $2, and so on)"
+echo $n
+
+echo "\$# The number of arguments supplied to a script. $# "
+
+echo "\$* All the arguments are double quoted. If a script receives two arguments, \$* is equivalent to \$1 \$2: $*"
+
+echo "\$@ All the arguments are individually double quoted. If a script receives two arguments, \$@ is equivalent to \$1 \$2 : $@" 
+
+echo "\$? The exit status of the last command executed: $?" 
+
+echo "\$$ The process number of the current shell. For shell scripts, this is the process ID under which they are executing: $$" 
+
+echo "\$! The process number of the last background command. $!"
+
 
 # to continue https://www.tutorialspoint.com/unix/unix-special-variables.htm
-
+# Special Parameters $* and $@
