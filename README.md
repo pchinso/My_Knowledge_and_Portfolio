@@ -35,7 +35,19 @@ Additionally, personal branding is essential to evolve across my career.
 
 ### Shell Scripting
 
+| About        | Repository README           | Repository  |
+| ------------- |:-------------:| :-----:|
+| Learning pills from Unix Shell tutorials | [link](<https://www.tutorialspoint.com/unix/shell_scripting.htm>) | [repo](./Sh/Unix%20Shell%20Tutorial/) |
+
 ### Electronics and Embedded systems
+
+#### Arduino
+
+| About        | Repository README           | Repository  |
+| ------------- |:-------------:| :-----:|
+| Configure VScode for emmbedded systems with PlatformIO | [README.md](./Electronics%20and%20Embedded%20systems/Arduino/README.md) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/ArduinoUNOblink/) |
+
+#### Raspberry
 
 ### C and C++
 
