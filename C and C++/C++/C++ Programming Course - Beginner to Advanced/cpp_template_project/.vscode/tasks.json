@@ -10,7 +10,7 @@
 				"-std=c++20",
 				"${workspaceFolder}\\*.cpp",
 				"-o",
-				"${fileDirname}\\rooster_g++.exe"
+				"${fileDirname}\\dist\\rooster_g++.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -30,7 +30,7 @@
 				"-std=c++20",
 				"${workspaceFolder}\\*.cpp",
 				"-o",
-				"${fileDirname}\\rooster_clang.exe"
+				"${fileDirname}\\dist\\rooster_clang.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -47,9 +47,10 @@
 			"command": "cl.exe",
 			"args": [
 				"/Zi",
+				"/std:c++latest",
 				"/EHsc",
 				"/Fe:",
-				"${fileDirname}\\rooster_cl.exe",
+				"${fileDirname}\\dist\\rooster_cl.exe",
 				"${workspaceFolder}\\*.cpp"
 			],
 			"options": {
