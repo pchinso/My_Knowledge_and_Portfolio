@@ -75,6 +75,8 @@ git log --pretty=format:"| %s | %cd |"
 
 | Commit        | Date           |
 | ------------- |:-------------:|
+| add ## Timeline chapter | Fri Feb 3 07:42:22 2023 +0100 |
+| tasks.json Add Clang compliler to C++ template  project | Fri Feb 3 07:41:48 2023 +0100 |
 | add sh Unix shell tutorial repo add embedded sys PlatformIO setup details and Arduino uno blink project | Thu Feb 2 22:34:17 2023 +0100 |
 | after PlatformIO instalation on Samsung create a gitignore inside blink project extesions.json | Thu Feb 2 22:16:02 2023 +0100 |
 | deleted gitignore Arduino project files by PlatformIO Add files to main gitignore | Thu Feb 2 17:19:04 2023 +0100 |
