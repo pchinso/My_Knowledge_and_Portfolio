@@ -23,7 +23,7 @@ git push -u origin main
 
 ## Undo last commit
 
-`git reset` command with the `--soft` option to reset the HEAD pointer to the previous commit. This command will not delete the commit from your repository history, but it will undo the changes made in that commit. 
+`git reset` command with the `--soft` option to reset the HEAD pointer to the previous commit. This command will not delete the commit from your repository history, but it will undo the changes made in that commit.
 
 You can also use the `git reset --hard` option if you want to delete the commit from your history. Be aware, however, that this will also delete any changes made in the commit, so it should be used with caution.
 

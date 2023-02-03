@@ -24,7 +24,7 @@ Learning material from video : C++ Programming Course - Beginner to Advanced (fr
 2. Configure VScode for C/C++ [steps](<https://youtu.be/8jLOx1hD3_o?t=1775>)
    1. Install C/C++ extension
    2. Create a C++ Windows project Template
-      1. Configure task.json to compile on VScode 
+      1. Configure task.json to compile on VScode
       *(Samsung laptop)*
       - [x] g++ c++20 (GCC 12.2.0)
       - [x] clang (Clang 15.0.7)
@@ -35,7 +35,7 @@ Learning material from video : C++ Programming Course - Beginner to Advanced (fr
 17 feb 2022
 Learn modern C++ 20 programming in this comprehensive course.
 
-💻 Source code: https://github.com/rutura/The-C-20-Ma...
+💻 [Course: source code](<https://github.com/rutura/The-C-20-Masterclass-Source-Code>)
 
 ✏️ Course developed by Daniel Gakwaya. Check out his YouTube channel: <https://www.youtube.com/channel/UCUYUFiuJ5XZ3JYtbq5dXRKQ>
 🐦 Twitter: <https://twitter.com/learnqtguide>
