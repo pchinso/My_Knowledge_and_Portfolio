@@ -28,7 +28,8 @@ Learning material from video : C++ Programming Course - Beginner to Advanced (fr
       *(Samsung laptop)*
       - [x] g++ c++20 (GCC 12.2.0)
       - [x] clang (Clang 15.0.7)
-      - [ ] [Microsoft compilers] (<https://youtu.be/8jLOx1hD3_o?t=2722>)
+      - [x] [Microsoft compilers] (<https://youtu.be/8jLOx1hD3_o?t=2722>)
+      - [x] Task for cl.exe configured but not working
 
 ### Course contend
 
