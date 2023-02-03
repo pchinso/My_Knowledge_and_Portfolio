@@ -2,6 +2,8 @@
 
 ## About this repositorie
 
+[https://github.com/pchinso/My_Knowledge_and_Portfolio](https://github.com/pchinso/My_Knowledge_and_Portfolio)
+
 <img src="https://media.licdn.com/dms/image/D4D16AQGLp3RQngHZCw/profile-displaybackgroundimage-shrink_350_1400/0/1670441509719?e=1680134400&v=beta&t=UThLm7BgttgmYFoaw_gzBoNdqomsThkuXvc7dQx8Eiw" width="50%"/>
 
 I am engaging in learning activities and projects to further my professional
