@@ -30,6 +30,11 @@ Learning material from video : C++ Programming Course - Beginner to Advanced (fr
       - [x] clang (Clang 15.0.7)
       - [x] [Microsoft compilers] (<https://youtu.be/8jLOx1hD3_o?t=2722>)
 
+3. [Online Compilers](<https://youtu.be/8jLOx1hD3_o?t=5738>)
+   1. [Wandbox](<https://wandbox.org/>)
+   2. [Coliru](<https://coliru.stacked-crooked.com/>)
+   3. [Compiler explorer](<https://godbolt.org/>)
+
 ### Course contend
 
 17 feb 2022
@@ -45,16 +50,17 @@ Learn modern C++ 20 programming in this comprehensive course.
 
 (0:04:32) [Chapter 1](https://www.youtube.com/watch?v=8jLOx1hD3_o&t=272s): Setting up the tools
 Tools
-Installing C++ Compilers on Windows
-Installing VS Code on Windows [Template project configuration](<https://youtu.be/8jLOx1hD3_o?t=1714>)
-Configuring Visual Studio Code for C++ on Windows
+
+- [x] Installing C++ Compilers on Windows
+- [x] Installing VS Code on Windows [Template project configuration](<https://youtu.be/8jLOx1hD3_o?t=1714>)
+- [x] Configuring Visual Studio Code for C++ on Windows
 Installing C++ Compilers on Linux
 Installing Visual Studio Code on Linux
 Configuring Visual Studio Code for C++ on Linux
 Installing C++ Compilers on MacOs
 Installing Visual Studio Code on MacOs
 Configuring Visual Studio Code for C++ on MacOs
-Online Compilers
+- [x] [Online Compilers](<https://youtu.be/8jLOx1hD3_o?t=5738>)
 
 (1:43:01) Chapter 2: Diving in
 Your First C++ Program
