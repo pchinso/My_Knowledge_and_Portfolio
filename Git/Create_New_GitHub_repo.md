@@ -31,3 +31,15 @@ You can also use the `git reset --hard` option if you want to delete the commi
 git reset --soft
 git reset --hard
 ```
+
+## Gitignore
+
+```git
+
+# gitignore a extension
+*.ext
+
+# gitignore all files inside a folder without specific location
+**/dist/**
+
+```
