@@ -11,9 +11,9 @@ void setup()
 
 void loop() 
 {
-// modified on chromebook
+
   digitalWrite(LED, HIGH);
-  delay(1500);
+  delay(200);
   digitalWrite(LED, LOW);
   delay(200);
 

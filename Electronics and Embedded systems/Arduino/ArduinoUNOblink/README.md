@@ -11,6 +11,8 @@ This is a template project for future projects with PlatformIO VSCode extension 
 
 - [x] Test upload firmware
 
+  `Works with no specified COM port`
+
 ## Chromebook
 
 - [x] Test upload firmware
