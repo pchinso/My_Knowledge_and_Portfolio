@@ -11,10 +11,10 @@ void setup()
 
 void loop() 
 {
-
+// modified on chromebook
   digitalWrite(LED, HIGH);
-  delay(500);
+  delay(1500);
   digitalWrite(LED, LOW);
-  delay(500);
+  delay(200);
 
 }                                                                                
