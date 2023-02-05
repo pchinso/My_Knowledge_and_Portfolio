@@ -2,19 +2,25 @@
 
 ## About this repositorie
 
-Some projects and learning material about Arduino platform
+Some projects and learning material about Arduino platform with PlatformIO on VScode
 
-## Visual Studio Code y PlatformIO
+## VScode y PlatformIO
 
-[Configure Visual Studio Code and PlatformIO](<https://www.youtube.com/watch?v=u9IMgIT1A6M&t=670s>)
+[Configure VScode and PlatformIO](<https://www.youtube.com/watch?v=u9IMgIT1A6M&t=670s>)
 
 [PlatformIO](<https://platformio.org/>) a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products.
 
 - [x] Installed on chromebook
-  - [ ] check VScode sincronization
-  - [ ] Samsung laptop
+  - [x] check VScode sincronization
+  - [x] Samsung laptop
   - [ ] Hp Laptop
+    `Proxy blocks PlatafomIO inicialization`
 
-- [x] Create first project
-- [ ] Code for blink program
-- [ ] Test Arduino board
+## Arduino UNO projects
+
+- [x] Create first project as template
+- [x] Code for blink program
+
+### Arduino UNO board
+
+- [ ] Project1:
