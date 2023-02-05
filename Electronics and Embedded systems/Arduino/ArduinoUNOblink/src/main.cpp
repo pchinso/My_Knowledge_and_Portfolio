@@ -1,12 +1,20 @@
 #include <Arduino.h>
 
-// TODO: Continue with code
-// https://youtu.be/u9IMgIT1A6M?t=229
+#define LED 13
 
-void setup() {
-  // put your setup code here, to run once:
+void setup() 
+{
+  
+  pinMode(LED, OUTPUT);
+
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop() 
+{
+
+  digitalWrite(LED, HIGH);
+  delay(500);
+  digitalWrite(LED, LOW);
+  delay(500);
+
+}                                                                                
