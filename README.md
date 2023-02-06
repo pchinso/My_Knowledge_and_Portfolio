@@ -76,7 +76,7 @@ Additionally, personal branding is essential to evolve across my career.
 
 #### February
 
-This repo birth Fri Jan 27 16:14:38 2023, because of my new computer [Samsung Galaxy Book2](<https://www.samsung.com/es/computers/galaxy-book/galaxy-book2-15inch-i7-16gb-512gb-np750xed-kc3es/>)
+This repo was born Fri Jan 27 16:14:38 2023, because of my new computer [Samsung Galaxy Book2](<https://www.samsung.com/es/computers/galaxy-book/galaxy-book2-15inch-i7-16gb-512gb-np750xed-kc3es/>)
 
 Initial task to configure main tools allowing code several languages inside VSCODE with this new computer and also my ChromeBook.
 
