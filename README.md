@@ -83,6 +83,8 @@ Initial task to configure main tools allowing code several languages inside VSCO
 1. Python
 2. C++
 3. Electronics and Emmbebed systems.(Arduino)
+4. Git
+5. Shell and Linux
 
 ### Git Log
 
