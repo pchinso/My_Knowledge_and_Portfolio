@@ -2,7 +2,7 @@
 
 ## About this repositorie
 
-Some projects and learning material about Arduino platform with PlatformIO on VScode
+Some projects and learning material about Arduino platform with PlatformIO on VScode with Wokwi for simulations and prototyping.
 
 ## VScode y PlatformIO
 
@@ -15,6 +15,15 @@ Some projects and learning material about Arduino platform with PlatformIO on VS
   - [x] Samsung laptop
   - [ ] Hp Laptop
     `Proxy blocks PlatafomIO inicialization`
+
+## Add prototyping and simulation to VSCode with WokWi
+
+[WokWi](<https://wokwi.com/>) an online Electronics simulator.
+You can use it to simulate Arduino, ESP32, and many other popular boards, parts and sensors.
+
+[Wokwi Online documentation](<https://docs.wokwi.com/>)
+
+[Wokwi VScode integration](<https://docs.wokwi.com/vscode/getting-started>)
 
 ## Arduino UNO projects
 

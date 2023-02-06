@@ -47,7 +47,8 @@ Additionally, personal branding is essential to evolve across my career.
 
 | About        | Repository README           | Repository  |
 | ------------- |:-------------:| :-----:|
-| Configure VScode for emmbedded systems with PlatformIO | [README.md](./Electronics%20and%20Embedded%20systems/Arduino/README.md) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/ArduinoUNOblink/) |
+| Configure VScode for emmbedded systems with PlatformIO | [README.md](./Electronics%20and%20**Embedded**%20systems/Arduino/README.md) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/ArduinoUNOblink/) |
+| Add prototyping and simulation to VSCode with Wokwi | [README.md](./Electronics%20and%20Embedded%20systems/Arduino/README.md#L19) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/) |
 
 #### Raspberry
 
@@ -71,12 +72,41 @@ Additionally, personal branding is essential to evolve across my career.
 
 ## Timeline
 
+### Monthly milestone
+
+#### February
+
+This repo birth Fri Jan 27 16:14:38 2023, because of my new computer [Samsung Galaxy Book2](<https://www.samsung.com/es/computers/galaxy-book/galaxy-book2-15inch-i7-16gb-512gb-np750xed-kc3es/>)
+
+Initial task to configure main tools allowing code several languages inside VSCODE with this new computer and also my ChromeBook.
+
+1. Python
+2. C++
+3. Electronics and Emmbebed systems.(Arduino)
+
+### Git Log
+
 ```sh
 git log --pretty=format:"| %s | %cd |"
 ```
 
 | Commit        | Date           |
 | ------------- |:-------------:|
+| Add Wokwi simulator ArduinoUNOblink [ok] ArduinoUNOinOut [ok] | Mon Feb 6 06:42:06 2023 +0100 |
+| New arduino uno project ArduinoUNOinOut | Sun Feb 5 09:50:27 2023 +0100 |
+| progress actualization | Sun Feb 5 09:45:02 2023 +0100 |
+| [ Ready to use ] Template for PlatformIO VSCode extension On Arduino UNO board Clear chromebook changes | Sun Feb 5 08:13:36 2023 +0100 |
+| Template for PlatformIO VSCode for Arduino UNO board Chromebook  [ ok ] | Sun Feb 5 08:05:29 2023 +0100 |
+| Template for PlatformIO VSCode for Arduino UNO board Samsung computer [ ok ] | Sun Feb 5 07:13:56 2023 +0100 |
+| cheatsheet for gitignore | Sat Feb 4 07:23:56 2023 +0100 |
+| add all files inside cpp /dist/ to gitignore Hello word to test cpp23 template and compiler tasks | Sat Feb 4 07:22:05 2023 +0100 |
+| Online Compilers chapter | Fri Feb 3 19:15:33 2023 +0100 |
+| cpp23_template_project and backup add cpp23 intellisense C++ standard | Fri Feb 3 18:30:41 2023 +0100 |
+| cpp template configured and working                           "/std:c++latest", | Fri Feb 3 18:20:49 2023 +0100 |
+| Cpp templete Microsoft compilers Task for cl.exe configured but not working | Fri Feb 3 18:00:56 2023 +0100 |
+| add main repo link | Fri Feb 3 13:24:42 2023 +0100 |
+| mlint problems check | Fri Feb 3 07:50:23 2023 +0100 |
+| update timeline | Fri Feb 3 07:45:02 2023 +0100 |
 | add ## Timeline chapter | Fri Feb 3 07:42:22 2023 +0100 |
 | tasks.json Add Clang compliler to C++ template  project | Fri Feb 3 07:41:48 2023 +0100 |
 | add sh Unix shell tutorial repo add embedded sys PlatformIO setup details and Arduino uno blink project | Thu Feb 2 22:34:17 2023 +0100 |
