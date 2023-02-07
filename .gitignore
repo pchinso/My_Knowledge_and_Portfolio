@@ -7,3 +7,4 @@
 
 # C++ Compiled executables and relative obj files
 **/dist/**
+*.exe

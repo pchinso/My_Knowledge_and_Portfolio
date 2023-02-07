@@ -2,5 +2,5 @@
 
 Only to check gcc Compiler setup
 
-- [ ] Samsung Laptop
+- [x] Samsung Laptop
 - [ ] ChromeBook
