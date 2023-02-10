@@ -1,4 +1,4 @@
-from gpiozero import LED
+from gpiozero import LED # https://gpiozero.readthedocs.io/en/stable/
 import time
 
 red = LED(17)
