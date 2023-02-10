@@ -50,6 +50,8 @@ Additionally, personal branding is essential to evolve across my career.
 | Configure VScode for emmbedded systems with PlatformIO | [README.md](./Electronics%20and%20**Embedded**%20systems/Arduino/README.md) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/ArduinoUNOblink/) |
 | Add prototyping and simulation to VSCode with Wokwi | [README.md](./Electronics%20and%20Embedded%20systems/Arduino/README.md#L19) | [repo](./Electronics%20and%20Embedded%20systems/Arduino/) |
 
+#### ESP8266
+
 #### Raspberry
 
 ### C and C++
