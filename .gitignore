@@ -8,3 +8,6 @@
 # C++ Compiled executables and relative obj files
 **/dist/**
 *.exe
+
+# Python Compiled executables and relative obj files
+*tempCodeRunnerFile*
