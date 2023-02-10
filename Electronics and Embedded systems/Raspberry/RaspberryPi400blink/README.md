@@ -6,3 +6,4 @@ This is a template project for future projects with PlatformIO VSCode extension 
 
 **Raspberry pi 400 pinout**
 <img src="./images/pi4j-rpi-400-pinout-small.png" width="50%"/>
+<img src="./images/a-and-b-physical-pin-numbers-300x140.png"/>
