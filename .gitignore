@@ -11,3 +11,4 @@
 
 # Python Compiled executables and relative obj files
 *tempCodeRunnerFile*
+*.pyc

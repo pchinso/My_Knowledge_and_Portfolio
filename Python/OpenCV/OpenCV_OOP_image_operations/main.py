@@ -1,0 +1,23 @@
+import cv2 as cv
+import sys
+import os
+
+from imageoperations import ImageOperations
+'''
+OpenCV Show image 
+
+'''
+
+if __name__ =="__main__":
+
+  cwd = os.getcwd()
+  image_path = os.path.join(cwd, r'input\test_wider.jpg')
+  print(image_path)
+
+  image = ImageOperations(image_path)
+
+  gray = image.to_gray_scale(show_image=True)
+
+  little = image.resize_px(height=40, width=50, interp=1, show_image=True)
+
+  big = image.resize_percent(height=110, width=150, interp=1, show_image=True)
