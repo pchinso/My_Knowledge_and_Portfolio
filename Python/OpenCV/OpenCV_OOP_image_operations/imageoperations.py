@@ -6,9 +6,7 @@ Objects Oriented class to perform OpenCV image operations
 '''
 import cv2 as cv
 import os 
-import sys
 import numpy as np
-
 
 
 class ImageOperations:
@@ -43,9 +41,9 @@ class ImageOperations:
     show_image = default False
     '''
 
-    try: 
+    try:
 
-      img = cv.imread(cv.samples.findFile(self.path))
+      gray_image = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
     
     except Exception as e: 
 
@@ -53,8 +51,6 @@ class ImageOperations:
     
     else: # convert image
 
-      gray_image = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-      
       if show_image:
 
         self.show_image(promt='Image to grayscale', img = gray_image)
@@ -85,54 +81,44 @@ class ImageOperations:
     show_image = default False
 
     '''
-    try: 
 
-      img = cv.imread(cv.samples.findFile(self.path))
-    
-    except Exception as e: 
+    if height * width > 0: 
 
-      print('Error: ', e)
+      ratio_height = height / self.image.shape[0]
+      ratio_width  = width /  self.image.shape[1]
     
     else: 
+      resize_px = width + height
+      ratio  = resize_px  / max(self.image.shape)
+      ratio_height = ratio
+      ratio_width  = ratio
 
-      if height * width > 0: 
-
-        ratio_height = height / img.shape[0]
-        ratio_width  = width /  img.shape[1]
+    image_shape = (int(self.image.shape[1] * ratio_width),
+                    int(self.image.shape[0] * ratio_height) 
+                  )
+    try:
       
-      else: 
-        resize_px = width + height
-        ratio  = resize_px  / max(img.shape)
-        ratio_height = ratio
-        ratio_width  = ratio
+      image_resized =  cv.resize(self.image, image_shape, interpolation = interp)
+    
+    except cv.error as e:
+      if 'inv_scale_x > 0' in str(e):
+        print('OpenCV error: Please provide a scale percent > 0 for resizing' )
 
-      image_shape = (int(img.shape[1] * ratio_width),
-                     int(img.shape[0] * ratio_height) 
-                    )
-      try:
-        
-        image_resized =  cv.resize(img, image_shape, interpolation = interp)
+    else:
       
-      except cv.error as e:
-        if 'inv_scale_x > 0' in str(e):
-          print('OpenCV error: Please provide a scale percent > 0 for resizing' )
-
-      else:
+      if show_image:
 
         print('Image resized by absolute pixels dimensions:')
-        print('Original image size: ', str(img.shape), ' px')
-        print('Aspect ratio Width / Height: ', str(img.shape[1]/img.shape[0]))
+        print('Original image size: ', str(self.image.shape), ' px')
+        print('Aspect ratio Width / Height: ', str(self.image.shape[1]/self.image.shape[0]))
         print('Resize factors: ', height, width, 'px')
         print('Resized  image size: ', str(image_resized.shape), ' px')
         print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
 
         self.show_image(promt='Image resized by absolute pixels dimensions', img = image_resized)
-      
-        return image_resized
+    
+      return image_resized
 
-
-
-    return 
 
   def resize_percent(self, height = 0, width = 0,  interp = 1, show_image = False):
     '''
@@ -158,50 +144,39 @@ class ImageOperations:
 
     '''
 
-    try: 
+    if height * width > 0: 
 
-      img = cv.imread(cv.samples.findFile(self.path))
-    
-    except Exception as e: 
-
-      print('Error: ', e)
+      ratio_height = height / 100
+      ratio_width  = width  / 100
     
     else: 
+      resize_percent = width + height
+      ratio_width  = resize_percent  / 100
+      ratio_height = ratio_width
 
-      if height * width > 0: 
-
-        ratio_height = height / 100
-        ratio_width  = width  / 100
+    image_shape = (int(self.image.shape[1] * ratio_width),
+                    int(self.image.shape[0] * ratio_height)
+                  )
+    try:
       
-      else: 
-        resize_percent = width + height
-        ratio_width  = resize_percent  / 100
-        ratio_height = ratio_width
+      image_resized =  cv.resize(self.image, image_shape, interpolation = interp)
+    
+    except cv.error as e:
+      if 'inv_scale_x > 0' in str(e):
+        print('OpenCV error: Please provide a scale percent > 0 for resizing' )
 
-      image_shape = (int(img.shape[1] * ratio_width),
-                     int(img.shape[0] * ratio_height)
-                    )
-      try:
-        
-        image_resized =  cv.resize(img, image_shape, interpolation = interp)
-      
-      except cv.error as e:
-        if 'inv_scale_x > 0' in str(e):
-          print('OpenCV error: Please provide a scale percent > 0 for resizing' )
+    else:
 
-      else:
+      if show_image:
 
-        if show_image:
-
-          print('Image resized by percentual values:')
-          print('Original image size: ', str(img.shape), ' px')
-          print('Aspect ratio Width / Height: ', str(img.shape[1]/img.shape[0]))
-          print('Resize factors: ', height, width, '%')
-          print('Resized  image size: ', str(image_resized.shape), ' px')
-          print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
+        print('Image resized by percentual values:')
+        print('Original image size: ', str(self.image.shape), ' px')
+        print('Aspect ratio Width / Height: ', str(self.image.shape[1]/self.image.shape[0]))
+        print('Resize factors: ', height, width, '%')
+        print('Resized  image size: ', str(image_resized.shape), ' px')
+        print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
 
 
-        self.show_image(promt='Image resized by percentual value', img = image_resized)
+      self.show_image(promt='Image resized by percentual value', img = image_resized)
 
-
-        return image_resized
+    return image_resized
