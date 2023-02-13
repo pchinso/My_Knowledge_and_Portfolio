@@ -7,6 +7,9 @@ Objects Oriented class to perform OpenCV image operations
 import cv2 as cv
 import os 
 import sys
+import numpy as np
+
+
 
 class ImageOperations:
   def __init__(self, path):
@@ -14,9 +17,23 @@ class ImageOperations:
     path = Full image path
     '''
     if os.path.exists(path):
-      self.path = path
+      self.path  = path
+      self.image = cv.imread(self.path)
     else: 
       print('Image not found!')
+
+  def show_image(self, promt='Title', img = np.array([])):
+
+    if img.size == 0:
+
+      cv.imshow(promt, self.image)
+
+    else:
+
+      cv.imshow(promt, img)
+
+    cv.waitKey(0)
+    cv.destroyAllWindows()
 
 
   def to_gray_scale(self, show_image = False):
@@ -40,9 +57,7 @@ class ImageOperations:
       
       if show_image:
 
-          cv.imshow("Image to grayscale", gray_image)
-          cv.waitKey(0)
-          cv.destroyAllWindows()
+        self.show_image(promt='Image to grayscale', img = gray_image)
 
       return gray_image
 
@@ -104,16 +119,14 @@ class ImageOperations:
 
       else:
 
-        print("Image resized by absolute pixels dimensions:")
+        print('Image resized by absolute pixels dimensions:')
         print('Original image size: ', str(img.shape), ' px')
         print('Aspect ratio Width / Height: ', str(img.shape[1]/img.shape[0]))
         print('Resize factors: ', height, width, 'px')
         print('Resized  image size: ', str(image_resized.shape), ' px')
         print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
 
-        cv.imshow("Image resized by absolute pixels dimensions", image_resized)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
+        self.show_image(promt='Image resized by absolute pixels dimensions', img = image_resized)
       
         return image_resized
 
@@ -180,7 +193,7 @@ class ImageOperations:
 
         if show_image:
 
-          print("Image resized by percentual values:")
+          print('Image resized by percentual values:')
           print('Original image size: ', str(img.shape), ' px')
           print('Aspect ratio Width / Height: ', str(img.shape[1]/img.shape[0]))
           print('Resize factors: ', height, width, '%')
@@ -188,8 +201,7 @@ class ImageOperations:
           print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
 
 
-          cv.imshow("Image resized by percentual value", image_resized)
-          cv.waitKey(0)
-          cv.destroyAllWindows()
+        self.show_image(promt='Image resized by percentual value', img = image_resized)
+
 
         return image_resized

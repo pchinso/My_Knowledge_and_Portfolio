@@ -11,10 +11,12 @@ OpenCV Show image
 if __name__ =="__main__":
 
   cwd = os.getcwd()
-  image_path = os.path.join(cwd, r'input\test_wider.jpg')
+  image_path = os.path.join(cwd, r'input\test.jpg')
   print(image_path)
 
   image = ImageOperations(image_path)
+
+  image.show_image('Original Image')
 
   gray = image.to_gray_scale(show_image=True)
 
