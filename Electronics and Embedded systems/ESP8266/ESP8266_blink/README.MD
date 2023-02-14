@@ -12,6 +12,11 @@ This is a template project for future projects with PlatformIO VSCode extension 
 
 <https://github.com/Freenove/Freenove_Basic_Starter_Kit_for_ESP8266>
 
+#### Tutorial
+
+[Main Repositorie](<https://github.com/Freenove/Freenove_Basic_Starter_Kit_for_ESP8266>)
+[Tutorial C](<https://github.com/Freenove/Freenove_Basic_Starter_Kit_for_ESP8266/blob/main/C/C_Tutorial.pdf>)
+
 ### Other board for projects with ESP8266
 
 [AZ-Delivery NodeMCU Lolin V3 documentation](./NodeMCU%20Lua%20V3%20Lolin_Englisch.pdf)
