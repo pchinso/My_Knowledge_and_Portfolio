@@ -82,12 +82,17 @@ This repo was born Fri Jan 27 16:14:38 2023, because of my new computer [Samsung
 
 Initial task to configure main tools allowing code several languages inside VSCODE with this new computer and also my ChromeBook.
 
-1. Python
-2. C++
-3. C
-4. Electronics and Emmbebed systems.(Arduino)
-5. Git
-6. Shell and Linux
+1. C and C++
+2. Electronics and Emmbebed systems
+   1. Arduino
+   2. ESP8266
+   3. Raspberry
+3. Git
+4. Linux
+5. Python
+   1. Django
+   2. OpenCV
+6. Shell Scripting
 
 ### Git Log
 
@@ -97,6 +102,28 @@ git log --pretty=format:"| %s | %cd |"
 
 | Commit        | Date           |
 | ------------- |:-------------:|
+| Linux realated configurations on windows. | Fri Feb 17 07:21:40 2023 +0100 |
+| Template project for Micropython VSCode and Pymaker on ESP8266 board | Thu Feb 16 07:06:40 2023 +0100 |
+| ESP8266 template [ok] Blink tested with Samsung laptop | Tue Feb 14 17:39:22 2023 +0100 |
+| Remove initial try block, now image read is included at __init__ remove unused imports | Mon Feb 13 08:00:54 2023 +0100 |
+| cv.imread(self.path) at class __init__ show image method | Mon Feb 13 07:22:48 2023 +0100 |
+| Objects Oriented class to perform OpenCV image operations with built-in methods | Sun Feb 12 11:19:31 2023 +0100 |
+| shell script to rebuild requirements.txt file remove initial pipenv files at template folder detailed steps for pipenv template activation template requirements.txt for openCV | Sat Feb 11 11:10:40 2023 +0100 |
+| md linter error trailing | Fri Feb 10 17:50:13 2023 +0100 |
+| *tempCodeRunnerFile* | Fri Feb 10 17:48:58 2023 +0100 |
+| My ESP8266 Board | Fri Feb 10 17:46:43 2023 +0100 |
+| OpenCV Show image | Fri Feb 10 17:46:25 2023 +0100 |
+| Electronics and Embedded systems Add ESP8266 | Fri Feb 10 08:13:04 2023 +0100 |
+| ESP8266 Blink project with PlatformIO VSCode extension | Fri Feb 10 08:10:48 2023 +0100 |
+| add gpiozero doc link | Fri Feb 10 07:09:34 2023 +0100 |
+| add raspberry gpio image reference | Fri Feb 10 07:07:24 2023 +0100 |
+| Raspberry blink template only code any test | Thu Feb 9 07:09:05 2023 +0100 |
+| Python OpenCV template Simple cv.imshow to check that OpenCV PipEnv template is correctly configured | Tue Feb 7 07:34:46 2023 +0100 |
+| add .exe to gitignore add C to configure task timeline C compiler works on Samsung Laptop | Tue Feb 7 06:51:15 2023 +0100 |
+| C compliler config | Mon Feb 6 17:47:17 2023 +0100 |
+| add 4. Git 5. Shell and Linux | Mon Feb 6 17:08:24 2023 +0100 |
+| grammar rev | Mon Feb 6 17:04:56 2023 +0100 |
+| Add prototyping and simulation to VSCode with WokWi progress update Monthly milestone | Mon Feb 6 17:02:55 2023 +0100 |
 | Add Wokwi simulator ArduinoUNOblink [ok] ArduinoUNOinOut [ok] | Mon Feb 6 06:42:06 2023 +0100 |
 | New arduino uno project ArduinoUNOinOut | Sun Feb 5 09:50:27 2023 +0100 |
 | progress actualization | Sun Feb 5 09:45:02 2023 +0100 |
