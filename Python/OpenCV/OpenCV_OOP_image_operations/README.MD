@@ -25,4 +25,7 @@ little = image.resize_px(height=40, width=50, interp=1, show_image=True)
 
 big = image.resize_percent(height=110, width=150, interp=1, show_image=True)
 
+# exif GPS data as dictionary 
+gps_location = image.print_exif_GPS(show_image = False)
+
 ```
