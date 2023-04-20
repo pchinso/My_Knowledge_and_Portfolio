@@ -12,3 +12,8 @@
 # Python Compiled executables and relative obj files
 *tempCodeRunnerFile*
 *.pyc
+
+# Python inputs ans results dirs
+**/results/**
+**/input/**
+
