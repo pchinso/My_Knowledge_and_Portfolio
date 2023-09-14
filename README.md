@@ -102,6 +102,15 @@ git log --pretty=format:"| %s | %cd |"
 
 | Commit                                                                                                                                                                          |              Date              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------: |
+| modifications for Ubutu setup local  paths and normpath | Thu Sep 14 09:47:05 2023 +0200 |
+| Create a module version to be imported | Thu Sep 14 09:42:07 2023 +0200 |
+| add relative path images for header and profile | Thu Sep 14 09:22:41 2023 +0200 |
+| 2304_Clasify_closer_images_to_WP From Waypoints dronedeploy file clasify images closest waypoint image to folder | Thu Apr 20 17:58:22 2023 +0200 |
+| gitignore Python inputs ans results dirs | Thu Apr 20 17:55:53 2023 +0200 |
+| add a image operation method extract exif GPS data as dictionary | Thu Apr 20 11:58:53 2023 +0200 |
+| Powershell script robocopy backup Documents Samsung Laptop | Sun Mar 5 15:22:29 2023 +0100 |
+| Pine64 NAS online project | Sat Mar 4 09:44:49 2023 +0100 |
+| ESP8266 initial web server test | Sun Feb 19 09:32:56 2023 +0100 |
 | Linux realated configurations on windows.                                                                                                                                       | Fri Feb 17 07:21:40 2023 +0100 |
 | Template project for Micropython VSCode and Pymaker on ESP8266 board                                                                                                            | Thu Feb 16 07:06:40 2023 +0100 |
 | ESP8266 template [ok] Blink tested with Samsung laptop                                                                                                                          | Tue Feb 14 17:39:22 2023 +0100 |
