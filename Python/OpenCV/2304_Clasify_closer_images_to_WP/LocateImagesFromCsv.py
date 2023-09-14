@@ -1,0 +1,84 @@
+import cv2 as cv
+import os
+import shutil
+import sys
+sys.path.append(r'/home/pcs/Documents/Python/OpenCV_OOP_image_operations')
+
+import pandas as pd
+from math import radians, sin, cos, sqrt, atan2
+
+from imageoperations import ImageOperations
+
+def list_input_images(directory):
+  # Create an empty list to store the file paths
+  all_images_paths = []
+  print('dir:', directory)
+
+  # Loop through all files in the directory
+  for filename in os.listdir(directory):
+      # Check if the file is an image
+      if filename.endswith('.jpg') or filename.endswith('.JPG'):
+          # Add the full file path to the list
+          all_images_paths.append(os.path.join(directory, filename))
+
+  # Return the list of image file paths
+  return all_images_paths
+
+
+# Define a function to calculate the distance between two coordinates using the Haversine formula
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371  # Radius of the earth in km
+    dLat = radians(lat2 - lat1)
+    dLon = radians(lon2 - lon1)
+    a = sin(dLat / 2) * sin(dLat / 2) + cos(radians(lat1)) * cos(radians(lat2)) * sin(dLon / 2) * sin(dLon / 2)
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c  # Distance in km
+    return distance
+
+def LocateImagesFromCsv(input_csv_file_path, input_images_path):
+
+  cwd = os.getcwd()
+  print('current: ', cwd)
+  # input_file_path = r'input/DroneDeployDownload_2023_04_21_090413.csv'
+  #/home/pcs/Documents/Python/2309_Clasify_closer_images_to_WP/input/DroneDeployDownload_2023_04_21_090413.csv
+  csv_full_input_path = os.path.normpath(os.path.join(os.getcwd(), input_csv_file_path))
+
+  WP = pd.read_csv(csv_full_input_path)
+  WP = WP.loc[:, ['AnnotationDescription','AnnotationLatAndLong']]
+  WP[['latitude', 'longitude']] = WP['AnnotationLatAndLong'].str.split(', ', expand=True)
+  WP = WP.loc[:,['AnnotationDescription','latitude', 'longitude']]
+  # Convert the latitude and longitude columns from str to float
+  WP['latitude'] = WP['latitude'].astype(float)
+  WP['longitude'] = WP['longitude'].astype(float)
+
+  print(os.path.join(cwd, r'input/DJI_images'))
+  # input_images_path =   os.path.normpath(os.path.join(cwd, r'input/DJI/')
+  all_images_paths = list_input_images(input_images_path)
+
+  #/home/pcs/Documents/Python/2309_Clasify_closer_images_to_WP/input/DJI
+
+  for image in all_images_paths:
+    photo = ImageOperations(image)
+    gps_loc = photo.print_exif_GPS()
+    print(gps_loc)
+
+    # Calculate the distance between each point in the dataframe and the dictionary coordinates
+    WP['distance'] = WP.apply(lambda row: haversine(row['latitude'], row['longitude'], gps_loc['latitude'], gps_loc['longitude']), axis=1)
+
+    # Get the top 3 rows with the minimum distances
+    closest_points = WP.sort_values('distance').head(1)
+
+    to_folder = closest_points.values[0,0]
+    print(to_folder)
+    destination = os.path.join(cwd, 'results', to_folder)
+    print(destination)
+
+
+    if not os.path.isdir(destination):
+      os.makedirs(destination)
+    
+    image_name = os.path.basename(image)
+    shutil.copyfile(image, os.path.join(destination, image_name))
+
+
+    print(closest_points)
