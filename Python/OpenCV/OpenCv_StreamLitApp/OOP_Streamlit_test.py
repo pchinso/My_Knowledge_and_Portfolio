@@ -17,11 +17,13 @@ class StreamlitApp:
                 
         if self.navigation in self.screens:
             self.show_screen()
+            
 
 
     def show_screen(self):
 
         if self.navigation == "Home":
+            
             st.header("Home Screen")
             st.write("Welcome to the home screen!")
             st.image("images/Me_profile_pic.jpeg", caption="Home Image")
@@ -35,8 +37,10 @@ class StreamlitApp:
             st.header("Contact Screen")
             st.write("You can contact us at contact@example.com")
             st.image("images/Me_profile_pic.jpeg", caption="Contact Image")            
-
-
+        
+        # Update current screen
+        self.current_screen = self.navigation
+        
 if __name__ == "__main__":
     app = StreamlitApp()
     app.run()
