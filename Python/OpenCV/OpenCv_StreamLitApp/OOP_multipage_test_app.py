@@ -3,27 +3,103 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 
-# Create a dictionary to store the pages and their content
-pages = {
-    "Page 1": {
-        "content": "This is Page 1 content.",
-        "image": "images/Me_profile_pic.jpeg",  # Path to the image for Page 1
-        "prev": None,
-        "next": "Page 2",
-    },
-    "Page 2": {
-        "content": "This is Page 2 content.",
-        "image": "images/Me_profile_pic.jpeg",  # Path to the image for Page 2
-        "prev": "Page 1",
-        "next": "Page 3",
-    },
-    "Page 3": {
-        "content": "This is Page 3 content.",
-        "image": "images/Me_profile_pic.jpeg",  # Path to the image for Page 2
-        "prev": "Page 2",
-        "next": None,
-    },
-}
+
+class StreamlitApp:
+    def __init__(self):
+        self.current_screen = None
+        self.screens = ["Home", 
+                        "About", 
+                        "Contact",
+                        ]
+        
+        self.screens = [
+        {
+        'title': 'Upload',
+        'header': 'Upload image',
+        'write': 'Upload a image to edit',
+        'image': '',
+        'image_caption': 'Original Image',
+        },
+        {
+        'title': 'About',
+        'header': 'About Screen',
+        'write': 'This is the about screen.',
+        'image': 'images/Me_profile_pic.jpeg',
+        'image_caption': 'About image',
+        },
+        {
+        'title': 'Contact',
+        'header': 'Contact Screen',
+        'write': 'You can contact us at contact@example.com',
+        'image': 'images/Me_profile_pic.jpeg',
+        'image_caption': 'Contact image',
+        },
+        {
+        'title': 'Send',
+        'header': 'Send Results',
+        'write': 'Sending results to contact@example.com',
+        'image': '',
+        'image_caption': 'No Image',
+        },        
+        ]
+
+        self.radio_buttons = [screen['title'] for screen in self.screens]
+
+
+        self.navigation = st.sidebar.radio("Select Screen", 
+                                           self.radio_buttons
+                                           )
+
+    def run(self):
+
+        # Main App Title
+        st.title("Object-Oriented Streamlit App")
+        
+        self.show_screen()
+            
+
+
+    def show_screen(self):
+
+        # Index of actual navigation button selected
+        screen_index = next((
+        screen_index
+        for screen_index, screen in enumerate(self.screens)
+        if screen['title'] == self.navigation
+        ), None)   
+
+        # Shows screen data
+        st.header(self.screens[screen_index]['header'])
+        st.write(self.screens[screen_index]['write'])
+        
+        if self.screens[screen_index]['image'] != '':
+            try:
+                st.image(self.screens[screen_index]['image'], 
+                        caption=self.screens[screen_index]['image_caption']
+                        )
+                
+            except FileNotFoundError:
+                st.error("File not found. Please provide a valid file path.")      
+
+            
+        # Update current screen
+        self.current_screen = screen_index
+
+        if self.current_screen == 0: # Upload
+
+            # Image Upload
+            image_file = st.file_uploader(
+                                "Upload Your Image", 
+                                type=['jpg', 'png', 'jpeg'])            
+            
+            self.screens[screen_index]['image'] = image_file
+
+            if self.screens[screen_index]['image'] != '':
+                original_image = Image.open(self.screens[screen_index]['image'])
+                original_image = np.array(original_image)            
+
+
+
 
 def blur_image(image, amount):
     blur_img = cv2.GaussianBlur(image, (11, 11), amount)
@@ -96,4 +172,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    app = StreamlitApp()
+    app.run()
