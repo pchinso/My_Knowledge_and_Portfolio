@@ -11,6 +11,29 @@ import numpy as np
 from PIL import Image
 from PIL.ExifTags import TAGS
 
+# For multiple monitors screens sizes
+from screeninfo import get_monitors
+
+def get_display_size():
+    monitors = get_monitors()
+    display_width = sum(m.width for m in monitors)
+    display_height = max(m.height for m in monitors)
+    
+    display = [display_width, display_height]
+    print('Size for all diplays(WxH): (', display, ')')
+    return (display)
+
+def get_main_display_size():
+    monitors = get_monitors()
+    primary_monitor = next((m for m in monitors if m.is_primary), None)
+    
+    if primary_monitor:
+        main_display_size = [primary_monitor.width, primary_monitor.height]
+        print('Size for main diplay(WxH): (', main_display_size, ')')
+        return main_display_size
+    else:
+        # Return the total screen size if there is no primary monitor        
+        return get_display_size()  
 
 class ImageOperations:
   def __init__(self, path):
@@ -20,17 +43,32 @@ class ImageOperations:
     if os.path.exists(path):
       self.path  = path
       self.image = cv.imread(self.path)
+      
+      #Initilize display variables 
+      self.display_size = get_display_size() 
+      self.main_display_size = get_main_display_size()
+      
+      #image size
+      self.height, self.width, self.channels = self.image.shape
+      
+      # Fitted to screen image clone
+      self.image_fit = cv.resize(self.image, (self.main_display_size))
+      
     else: 
       print('Image not found!')
 
   def show_image(self, promt='Title', img = np.array([])):
 
-    if img.size == 0:
+    if img.size == 0 \
+       and self.height > self.main_display_size[0]:
 
-      cv.imshow(promt, self.image)
+      cv.imshow('Fitted Image', self.image_fit)
+
+    elif img.size == 0:
+      
+      cv.imshow('Original Image', self.image)
 
     else:
-
       cv.imshow(promt, img)
 
     cv.waitKey(0)
@@ -73,13 +111,13 @@ class ImageOperations:
 
     interp = 
 
-    0 cv2.INTER_NEAREST,
+    0 cv.INTER_NEAREST,
 
-    1 cv2.INTER_LINEAR,
+    1 cv.INTER_LINEAR,
 
-    2 cv2.INTER_CUBIC,
+    2 cv.INTER_CUBIC,
 
-    4 cv2.INTER_LANCZOS4,
+    4 cv.INTER_LANCZOS4,
 
     show_image = default False
 
@@ -135,13 +173,13 @@ class ImageOperations:
 
     interp = 
 
-    0 cv2.INTER_NEAREST,
+    0 cv.INTER_NEAREST,
 
-    1 cv2.INTER_LINEAR,
+    1 cv.INTER_LINEAR,
 
-    2 cv2.INTER_CUBIC,
+    2 cv.INTER_CUBIC,
 
-    4 cv2.INTER_LANCZOS4,
+    4 cv.INTER_LANCZOS4,
 
     show_image = default False
 
@@ -183,6 +221,48 @@ class ImageOperations:
       self.show_image(promt='Image resized by percentual value', img = image_resized)
 
     return image_resized
+  
+  def crop_roi(self, show_roi = True):
+      self.points = []
+      self.cropping = False
+
+      def click_and_crop(event, x, y, flags, param):
+          if event == cv.EVENT_LBUTTONDOWN:
+              self.points.append((x, y))
+              self.cropping = True
+          elif event == cv.EVENT_LBUTTONUP:
+              self.points.append((x, y))
+              self.cropping = False
+
+      cv.namedWindow("image")
+      cv.setMouseCallback("image", click_and_crop)
+
+      while True:
+          clone = self.image.copy()
+          if len(self.points) >= 2:
+              cv.polylines(clone, [np.array(self.points)], isClosed=True, color=(0, 255, 0), thickness=2)
+          cv.imshow("image", clone)
+          key = cv.waitKey(1) & 0xFF
+
+          if key == ord("r"):
+              self.points = []
+
+          if key == ord("c") and len(self.points) >= 3:
+              # Find the minimum and maximum x and y coordinates of the polygon
+              x_min, y_min = np.min(self.points, axis=0)
+              x_max, y_max = np.max(self.points, axis=0)
+
+              # Crop the maximum width and height region from the original image
+              roi = self.image[y_min:y_max, x_min:x_max]
+
+              return roi, self.points
+
+          if key == 27:  # Press Esc to exit
+              break
+
+      cv.destroyAllWindows()
+  
+  
   
   def print_exif_GPS(self, show_image=False):
       '''
