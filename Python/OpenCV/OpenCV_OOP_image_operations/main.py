@@ -77,7 +77,23 @@ if __name__ =="__main__":
   print('Image Channels: ',image.channels) 
 
   image.restore_image()
-  
+
+  # Crop a ROI
+  image.crop_roi(show_roi=True)
+
+  print(image.original_im_ROI_points)
+
+  # ROI values
+  # image size variables
+  print('Image Height: ',image.height) 
+  print('Image Widht: ',image.width) 
+  print('Image Channels: ',image.channels) 
+
+  # image.save_image() Save ROI as image copy
+
+  image.restore_image()
+
+  # Get gps coordinates 
   gps_location = image.print_exif_GPS(show_image = True)
 
   # Original values
