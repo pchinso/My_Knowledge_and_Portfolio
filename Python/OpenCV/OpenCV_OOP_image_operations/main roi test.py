@@ -22,6 +22,8 @@ if __name__ =="__main__":
   image.show_image()
   image.save_image()
 
+  print(image.original_im_ROI_points)
+
   # roi_scaler = [image.width / image.main_display_size[0],
   #               image.height / image.main_display_size[1]
   #              ]

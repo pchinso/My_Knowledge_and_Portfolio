@@ -269,34 +269,40 @@ class ImageOperations:
       self.show_image(promt='Image resized by percentual value')
   
   def crop_roi(self, show_roi = True):
-      self.points_fit = []
+      points_fit = []
       self.cropping = False
 
       def click_and_crop(event, x, y, flags, param):
           if event == cv.EVENT_LBUTTONDOWN:
-              self.points_fit.append((x, y))
+              points_fit.append((x, y))
               self.cropping = True
-          elif event == cv.EVENT_LBUTTONUP:
-              self.points_fit.append((x, y))
-              self.cropping = False
+          # elif event == cv.EVENT_LBUTTONUP:
+          #     points_fit.append((x, y))
+          #     self.cropping = False
 
-      cv.namedWindow("image")
-      cv.setMouseCallback("image", click_and_crop)
+      cv.namedWindow('image')
+      cv.setMouseCallback('image', click_and_crop)
 
       while True:
           clone_fit = self.image_fit
-          if len(self.points_fit) >= 2:
-              cv.polylines(clone_fit, [np.array(self.points_fit)], isClosed=True, color=(0, 255, 0), thickness=2)
-          cv.imshow("image", clone_fit)
+          if len(points_fit) >= 2:
+              cv.polylines(clone_fit, 
+                           [np.array(points_fit)], 
+                           isClosed=True, 
+                           color=(0, 255, 0), 
+                           thickness=1
+                           )
+              
+          cv.imshow('image', clone_fit)
           key = cv.waitKey(1) & 0xFF
 
-          if key == ord("r"):
-              self.points_fit = []
+          if key == ord('r'):
+              points_fit = []
 
-          if key == ord("c") and len(self.points_fit) >= 3:
+          if key == ord('c') and len(points_fit) >= 3:
               # Find the minimum and maximum x and y coordinates of the polygon
-              x_min, y_min = np.min(self.points_fit, axis=0)
-              x_max, y_max = np.max(self.points_fit, axis=0)
+              x_min, y_min = np.min(points_fit, axis=0)
+              x_max, y_max = np.max(points_fit, axis=0)
 
               # Crop the maximum width and height region from the original image
               roi_fit = self.image_fit[y_min:y_max, x_min:x_max]
@@ -306,13 +312,13 @@ class ImageOperations:
                             self.height / self.main_display_size[1]
                            ]
               roi = []
-              for i in range(len(self.points_fit)):
-                pair = (self.points_fit[i][0]*roi_scaler[0],
-                        self.points_fit[i][1]*roi_scaler[1]
+              for i in range(len(points_fit)):
+                pair = (points_fit[i][0]*roi_scaler[0],
+                        points_fit[i][1]*roi_scaler[1]
                        )
                 roi.append(pair)
 
-              print('ROI: \n')
+              print('Scaled ROI points:')
               print(roi)                
                               
               # Find the minimum and maximum x and y coordinates of the polygon
@@ -323,16 +329,21 @@ class ImageOperations:
               roi_image = self.image[int(y_min):int(y_max), 
                                      int(x_min):int(x_max)
                                     ]
-              
+              # Update image
+              self.image = roi_image
+              self.image_fit = roi_fit
+              self.update_image_size()
+
+              # Save ROi Points in orginal image
+              self.original_im_ROI_points = [(int(y_min),int(y_max)), 
+                                             (int(x_min),int(x_max))
+                                            ]
               if show_roi:
                 while True:
-                  cv.imshow('Selected ROI', roi_image)  
+                  cv.imshow('Selected ROI', self.image)  
                   key = cv.waitKey(1) & 0xFF
                   if key == 27:
                     break              
-
-              self.image = roi_image
-              self.image_fit = roi_fit
 
           if key == 27:  # Press Esc to exit
               break
@@ -367,7 +378,7 @@ class ImageOperations:
         font = cv.FONT_HERSHEY_SIMPLEX
         text = ''
 
-        gps_dict = {'latitude': '', "longitude": ''}
+        gps_dict = {'latitude': '', 'longitude': ''}
 
         # Get GPSInfo tag and its sub-tags
         gps_info = exif_data.get(34853, None)
@@ -394,7 +405,7 @@ class ImageOperations:
             text += f'Longitude: {longitude_decimal:.20f}\n'
 
             # Save latitude, latitude values as dictionary
-            gps_dict = {'latitude': latitude_decimal, "longitude": longitude_decimal}
+            gps_dict = {'latitude': latitude_decimal, 'longitude': longitude_decimal}
 
       except Exception as e: 
         print('Error: ', e)
