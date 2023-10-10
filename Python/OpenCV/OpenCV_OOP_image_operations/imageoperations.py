@@ -20,7 +20,6 @@ def get_display_size():
     display_height = max(m.height for m in monitors)
     
     display = [display_width, display_height]
-    print('Size for all diplays(WxH): (', display, ')')
     return (display)
 
 def get_main_display_size():
@@ -29,7 +28,6 @@ def get_main_display_size():
     
     if primary_monitor:
         main_display_size = [primary_monitor.width, primary_monitor.height]
-        print('Size for main diplay(WxH): (', main_display_size, ')')
         return main_display_size
     else:
         # Return the total screen size if there is no primary monitor        
@@ -43,6 +41,7 @@ class ImageOperations:
     if os.path.exists(path):
       self.path  = path
       self.image = cv.imread(self.path)
+      self.clone = self.image.copy()
       
       #Initilize display variables 
       self.display_size = get_display_size() 
@@ -56,6 +55,24 @@ class ImageOperations:
       
     else: 
       print('Image not found!')
+  
+
+  
+  def update_image_size(self):
+
+    if len(self.image.shape) == 3:
+      self.height, self.width, self.channels = self.image.shape
+    else:
+      self.height, self.width = self.image.shape
+
+  def restore_image(self):
+
+    self.image = self.clone
+    self.image_fit = cv.resize(self.image, (self.main_display_size))
+
+    self.update_image_size()
+    print('**Image restored to initial values**')
+
 
   def show_image(self, promt='Title', img = np.array([])):
 
@@ -84,7 +101,10 @@ class ImageOperations:
 
     try:
 
-      gray_image = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
+      self.image = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
+      self.image_fit = cv.cvtColor(self.image_fit, cv.COLOR_BGR2GRAY)
+      self.channels = 1
+
     
     except Exception as e: 
 
@@ -94,10 +114,7 @@ class ImageOperations:
 
       if show_image:
 
-        self.show_image(promt='Image to grayscale', img = gray_image)
-
-      return gray_image
-
+        self.show_image(promt='Image to grayscale')
 
   def resize_px(self, height = 0, width = 0,  interp = 1, show_image = False):
     '''
@@ -139,8 +156,10 @@ class ImageOperations:
                   )
     try:
       
-      image_resized =  cv.resize(self.image, image_shape, interpolation = interp)
-    
+      self.image =  cv.resize(self.image, image_shape, interpolation = interp)
+      self.image_fit = cv.resize(self.image_fit, image_shape, interpolation = interp)
+      self.update_image_size()
+
     except cv.error as e:
       if 'inv_scale_x > 0' in str(e):
         print('OpenCV error: Please provide a scale percent > 0 for resizing' )
@@ -150,16 +169,14 @@ class ImageOperations:
       if show_image:
 
         print('Image resized by absolute pixels dimensions:')
-        print('Original image size: ', str(self.image.shape), ' px')
-        print('Aspect ratio Width / Height: ', str(self.image.shape[1]/self.image.shape[0]))
+        print('Original image size: ', str(self.clone.shape), ' px')
+        print('Aspect ratio Width / Height: ', str(self.clone.shape[1]/self.clone.shape[0]))
         print('Resize factors: ', height, width, 'px')
-        print('Resized  image size: ', str(image_resized.shape), ' px')
-        print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
+        print('Resized  image size: ', str(self.image.shape), ' px')
+        print('New aspect ratio: ', str(self.image.shape[1]/self.image.shape[0]))
 
-        self.show_image(promt='Image resized by absolute pixels dimensions', img = image_resized)
+        self.show_image(promt='Image resized by absolute pixels dimensions', )
     
-      return image_resized
-
 
   def resize_percent(self, height = 0, width = 0,  interp = 1, show_image = False):
     '''
@@ -200,7 +217,9 @@ class ImageOperations:
                   )
     try:
       
-      image_resized =  cv.resize(self.image, image_shape, interpolation = interp)
+      self.image =  cv.resize(self.image, image_shape, interpolation = interp)
+      self.image_fit = cv.resize(self.image_fit, image_shape, interpolation = interp)
+      self.update_image_size()
     
     except cv.error as e:
       if 'inv_scale_x > 0' in str(e):
@@ -211,16 +230,14 @@ class ImageOperations:
       if show_image:
 
         print('Image resized by percentual values:')
-        print('Original image size: ', str(self.image.shape), ' px')
-        print('Aspect ratio Width / Height: ', str(self.image.shape[1]/self.image.shape[0]))
+        print('Original image size: ', str(self.clone.shape), ' px')
+        print('Aspect ratio Width / Height: ', str(self.clone.shape[1]/self.clone.shape[0]))
         print('Resize factors: ', height, width, '%')
-        print('Resized  image size: ', str(image_resized.shape), ' px')
-        print('New aspect ratio: ', str(image_resized.shape[1]/image_resized.shape[0]))
+        print('Resized  image size: ', str(self.image.shape), ' px')
+        print('New aspect ratio: ', str(self.image.shape[1]/self.image.shape[0]))
 
 
-      self.show_image(promt='Image resized by percentual value', img = image_resized)
-
-    return image_resized
+      self.show_image(promt='Image resized by percentual value')
   
   def crop_roi(self, show_roi = True):
       self.points = []
@@ -326,6 +343,7 @@ class ImageOperations:
         if show_image:
           # Put the text on the image
           cv.putText(self.image, text, (20, 40), font, 0.5, (255, 255, 255), 1)
+          cv.putText(self.image_fit, text, (20, 40), font, 0.5, (255, 255, 255), 1)
 
           # Display the image with the GPS info
           self.show_image(promt='Image with exif GPS info')
@@ -334,5 +352,9 @@ class ImageOperations:
         # Wait for a key press and then close the window
         cv.waitKey(0)
         cv.destroyAllWindows()
-
+      
+      #show exif GPS Coordinates
+      print('Exif GPS coordinates ')
+      print('Latitude: ', gps_dict['latitude'])
+      print('Longitude:', gps_dict['longitude'])
       return gps_dict

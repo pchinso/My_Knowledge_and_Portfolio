@@ -16,22 +16,57 @@ if __name__ =="__main__":
 
   image = ImageOperations(image_path)
 
-
   # Display variables 
-  print('All diaplays size: ', image.display_size)
+  print('All displays size: ', image.display_size)
   print('Main diaplays size: ', image.main_display_size) 
   
-  #image size variables
+  # Initial Values 
+  # image size variables
   print('Image Height: ',image.height) 
   print('Image Widht: ',image.width) 
   print('Image Channels: ',image.channels) 
 
-  image.show_image('Original Image')
+  image.show_image()
 
-  gray = image.to_gray_scale(show_image=True)
+  # To Gray
+  print('To Gray')
+  image.to_gray_scale(show_image=True)
 
-  little = image.resize_px(height=40, width=50, interp=1, show_image=True)
+  # To gray values 
+  # image size variables
+  print('Image Height: ',image.height) 
+  print('Image Widht: ',image.width) 
+  print('Image Channels: ',image.channels) 
 
-  big = image.resize_percent(height=110, width=150, interp=1, show_image=True)
+  image.restore_image()
 
-  gps_location = image.print_exif_GPS(show_image = False)
+
+  # Resize image by especific pixel size
+  image.resize_px(height=400, width=500, interp=1, show_image=True)
+
+  # After Resize values 
+  # image size variables
+  print('Image Height: ',image.height) 
+  print('Image Widht: ',image.width) 
+  print('Image Channels: ',image.channels) 
+
+  image.restore_image()
+  
+  # Resize image by percent
+  image.resize_percent(height=10, width=10, interp=1, show_image=True)
+
+  # After Resize values 
+  # image size variables
+  print('Image Height: ',image.height) 
+  print('Image Widht: ',image.width) 
+  print('Image Channels: ',image.channels) 
+
+  image.restore_image()
+  
+  gps_location = image.print_exif_GPS(show_image = True)
+
+  # Original values
+  # image size variables
+  print('Image Height: ',image.height) 
+  print('Image Widht: ',image.width) 
+  print('Image Channels: ',image.channels) 
