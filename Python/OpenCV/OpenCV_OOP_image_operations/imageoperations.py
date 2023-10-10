@@ -56,8 +56,37 @@ class ImageOperations:
     else: 
       print('Image not found!')
   
+  def save_image(self, save_path='', image_name='', image_extension=''):
+     
+    if  save_path == '':
 
-  
+      save_path = self.path
+
+      image_name, image_extension = save_path.split('.')
+      image_name = image_name + '_copy'
+
+      save_path = image_name + '.' + image_extension
+
+    else:
+      image_name = image_name + '.' + image_extension      
+      save_path = os.path.join(save_path , image_name)
+
+
+    try:
+      os.makedirs(os.path.dirname(save_path))
+    
+    except FileExistsError:      
+      cv.imwrite(save_path, self.image)
+    
+    except Exception as e: 
+      print('Error: ', e)
+    
+    else:
+      cv.imwrite(save_path, self.image)
+    
+    print(f'Image saved successfully at: {save_path}')
+
+    
   def update_image_size(self):
 
     if len(self.image.shape) == 3:

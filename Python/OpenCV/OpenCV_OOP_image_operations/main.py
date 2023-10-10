@@ -16,6 +16,15 @@ if __name__ =="__main__":
 
   image = ImageOperations(image_path)
 
+  # image.save_image(self, save_path='', image_name='', image_extension=''):
+  # Save a image copy in same dir
+  image.save_image()
+  # Save a image copy in other dir
+  image.save_image(save_path='/home/pcs/Documents/xxx/',
+                   image_name='copy',
+                   image_extension = 'png'
+                   )
+
   # Image file
   print('Full path of image: ' , image.path)
   print('Image: ' , type(image.image))
@@ -42,7 +51,7 @@ if __name__ =="__main__":
   # image size variables
   print('Image Height: ',image.height) 
   print('Image Widht: ',image.width) 
-  print('Image Channels: ',image.channels) 
+  print('Image Channels: ',image.channels)
 
   image.restore_image()
 
