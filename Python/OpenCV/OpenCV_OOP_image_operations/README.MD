@@ -23,6 +23,11 @@ To revert any changes made to the copy, use the image.restore_image() method.
 
 ```python
 
+
+  image.crop_roi(show_roi=True)
+
+  image.show_image()
+  image.save_image()
 # Show image
 image.show_image()
 
@@ -49,6 +54,13 @@ image.restore_image()
 
 # Resize image by percent
 image.resize_percent(height=10, width=10, interp=1, show_image=True)
+
+# Crop image ROI
+image.crop_roi(show_roi=True)
+
+# Show original image ROI crop and save ROI as new image
+image.show_image() 
+image.save_image() 
 
 # Restore image to revert changes
 image.restore_image()
