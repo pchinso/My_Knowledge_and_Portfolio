@@ -16,15 +16,21 @@ if __name__ =="__main__":
 
   image = ImageOperations(image_path)
 
-  # Display variables 
-  print('All displays size: ', image.display_size)
-  print('Main diaplays size: ', image.main_display_size) 
-  
+  # Image file
+  print('Full path of image: ' , image.path)
+  print('Image: ' , type(image.image))
+  print('Original Image cloned to revert changes: ' , type(image.image))
+  print('Resized Image fitted to display size: ', type(image.image_fit))
+
   # Initial Values 
-  # image size variables
+  # Image size variables
   print('Image Height: ',image.height) 
   print('Image Widht: ',image.width) 
   print('Image Channels: ',image.channels) 
+
+  # Display variables 
+  print('All displays size: ', image.display_size)
+  print('Main diaplays size: ', image.main_display_size) 
 
   image.show_image()
 

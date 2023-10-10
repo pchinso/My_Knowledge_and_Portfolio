@@ -17,15 +17,57 @@ image = ImageOperations(image_path)
 
 ### Methods
 
+The ImageOperations class modifies a copy of the original image in memory, while leaving the original image file unchanged.
+
+To revert any changes made to the copy, use the image.restore_image() method.
+
 ```python
 
-gray = image.to_gray_scale(show_image=True)
+# Show image
+image.show_image()
 
-little = image.resize_px(height=40, width=50, interp=1, show_image=True)
+# To Gray
+image.to_gray_scale(show_image=True)
 
-big = image.resize_percent(height=110, width=150, interp=1, show_image=True)
+# Restore image to revert changes
+image.restore_image()
 
-# exif GPS data as dictionary 
-gps_location = image.print_exif_GPS(show_image = False)
+# Resize image by especific pixel size size 
+image.resize_px(height=400, width=500, interp=1, show_image=True)
+
+# Restore image to revert changes
+image.restore_image()
+
+# Resize image by percent
+image.resize_percent(height=10, width=10, interp=1, show_image=True)
+
+# Restore image to revert changes
+image.restore_image()
+
+# Get image gps coordinates as dictionarie
+gps_location = image.print_exif_GPS(show_image = True)
+
+```
+
+### Variables
+
+The ImageOperations class contains main variables that represent key attributes of an image.
+
+```python
+
+# Image file
+print('Full path of image: ' , image.path)
+print('Image: ' , type(image.image))
+print('Original Image cloned to revert changes: ' , type(image.image))
+print('Resized Image fitted to display size: ' type(image_fit))
+
+# Image size variables
+print('Image Height: ',image.height) 
+print('Image Widht: ',image.width) 
+print('Image Channels: ',image.channels) 
+
+# Display variables 
+print('All displays size: ', image.display_size)
+print('Main diaplays size: ', image.main_display_size) 
 
 ```
