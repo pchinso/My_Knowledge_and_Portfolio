@@ -283,17 +283,30 @@ class ImageOperations:
       cv.namedWindow('image')
       cv.setMouseCallback('image', click_and_crop)
 
+      # check image size to provide adecuate scaler
+      if   self.width  > self.main_display_size[0] \
+        or self.height > self.main_display_size[1]:
+        
+        clone = self.image_fit
+        # Scale roi_fit to roi
+        roi_scaler = [self.width / self.main_display_size[0],
+                      self.height / self.main_display_size[1]
+                      ]        
+      
+      else:
+        clone = self.image
+        roi_scaler = [1,1]
+
       while True:
-          clone_fit = self.image_fit
           if len(points_fit) >= 2:
-              cv.polylines(clone_fit, 
+              cv.polylines(clone, 
                            [np.array(points_fit)], 
                            isClosed=True, 
                            color=(0, 255, 0), 
                            thickness=1
                            )
               
-          cv.imshow('image', clone_fit)
+          cv.imshow('image', clone)
           key = cv.waitKey(1) & 0xFF
 
           if key == ord('r'):
@@ -305,16 +318,12 @@ class ImageOperations:
               x_max, y_max = np.max(points_fit, axis=0)
 
               # Crop the maximum width and height region from the original image
-              roi_fit = self.image_fit[y_min:y_max, x_min:x_max]
+              roi_fit = clone[y_min:y_max, x_min:x_max]
 
-              # Scale roi_fit to roi
-              roi_scaler = [self.width / self.main_display_size[0],
-                            self.height / self.main_display_size[1]
-                           ]
               roi = []
               for i in range(len(points_fit)):
-                pair = (points_fit[i][0]*roi_scaler[0],
-                        points_fit[i][1]*roi_scaler[1]
+                pair = (int(points_fit[i][0]*roi_scaler[0]),
+                        int(points_fit[i][1]*roi_scaler[1])
                        )
                 roi.append(pair)
 
@@ -326,8 +335,8 @@ class ImageOperations:
               x_max, y_max = np.max(roi, axis=0)
 
               # Crop the maximum width and height region from the original image
-              roi_image = self.image[int(y_min):int(y_max), 
-                                     int(x_min):int(x_max)
+              roi_image = self.image[y_min:y_max, 
+                                     x_min:x_max
                                     ]
               # Update image
               self.image = roi_image
@@ -335,9 +344,10 @@ class ImageOperations:
               self.update_image_size()
 
               # Save ROi Points in orginal image
-              self.original_im_ROI_points = [(int(y_min),int(y_max)), 
-                                             (int(x_min),int(x_max))
-                                            ]
+              self.original_im_ROI_points = roi
+              self.original_im_ROI_box = [(int(y_min),int(y_max)), 
+                                          (int(x_min),int(x_max))
+                                         ]
               if show_roi:
                 while True:
                   cv.imshow('Selected ROI', self.image)  
