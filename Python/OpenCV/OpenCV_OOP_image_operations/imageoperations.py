@@ -268,7 +268,7 @@ class ImageOperations:
 
       self.show_image(promt='Image resized by percentual value')
   
-  def crop_roi(self, show_roi = True):
+  def crop_roi(self, show_roi = True, self_image_update = False):
       points_fit = []
       self.cropping = False
 
@@ -339,9 +339,10 @@ class ImageOperations:
                                      x_min:x_max
                                     ]
               # Update image
-              self.image = roi_image
-              self.image_fit = roi_fit
-              self.update_image_size()
+              if self_image_update:
+                self.image = roi_image
+                self.image_fit = roi_fit
+                self.update_image_size()
 
               # Save ROi Points in orginal image
               self.original_im_ROI_points = roi
@@ -350,7 +351,7 @@ class ImageOperations:
                                          ]
               if show_roi:
                 while True:
-                  cv.imshow('Selected ROI', self.image)  
+                  cv.imshow('Selected ROI', roi_image)  
                   key = cv.waitKey(1) & 0xFF
                   if key == 27:
                     break              

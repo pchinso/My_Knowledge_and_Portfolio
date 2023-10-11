@@ -73,13 +73,13 @@ print(image_path)
 image = ImageOperations(image_path)
 
 image.crop_roi()
-image.restore_image()
+# image.restore_image()
 
 pts = np.float32(image.original_im_ROI_points)
 # apply the four point tranform to obtain a "birds eye view" of
 # the image
 warped = four_point_transform(image.image, pts)
 # show the original and warped images
-cv2.imshow("Original", image.image)
+image.show_image('Original')
 cv2.imshow("Warped", warped)
 cv2.waitKey(0)
