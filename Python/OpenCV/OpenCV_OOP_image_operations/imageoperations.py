@@ -273,9 +273,10 @@ class ImageOperations:
       Crop a region of interest for an image (ROI)
       If image is bigger than scren size you visualize a fitted version 
       and applies a scaler to original image
+      
       Parameters
       show_roi (bool): Show cropped ROI. Default is True.
-      self_image_update (bool): Keep original image. Default is False.
+      self_image_update (bool): Update original image with ROI. Default is False.
       
       Returns: 
       None
