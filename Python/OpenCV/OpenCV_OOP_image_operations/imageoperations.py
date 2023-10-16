@@ -269,6 +269,21 @@ class ImageOperations:
       self.show_image(promt='Image resized by percentual value')
   
   def crop_roi(self, show_roi = True, self_image_update = False):
+      '''
+      Crop a region of interest for an image (ROI)
+      If image is bigger than scren size you visualize a fitted version 
+      and applies a scaler to original image
+      Parameters
+      show_roi (bool): Show cropped ROI. Default is True.
+      self_image_update (bool): Keep original image. Default is False.
+      
+      Returns: 
+      None
+      
+      Saves: 
+      self.roi (list): ROI points.
+      self.roi_box (list): Bounding box of ROI.
+      '''      
       points_fit = []
       self.cropping = False
 
@@ -325,10 +340,7 @@ class ImageOperations:
                 pair = (int(points_fit[i][0]*roi_scaler[0]),
                         int(points_fit[i][1]*roi_scaler[1])
                        )
-                roi.append(pair)
-
-              print('Scaled ROI points:')
-              print(roi)                
+                roi.append(pair)               
                               
               # Find the minimum and maximum x and y coordinates of the polygon
               x_min, y_min = np.min(roi, axis=0)
@@ -344,11 +356,17 @@ class ImageOperations:
                 self.image_fit = roi_fit
                 self.update_image_size()
 
-              # Save ROi Points in orginal image
-              self.original_im_ROI_points = roi
-              self.original_im_ROI_box = [(int(y_min),int(y_max)), 
+              # Save ROI Points in orginal image
+              self.roi = roi
+              self.roi_box = [(int(y_min),int(y_max)), 
                                           (int(x_min),int(x_max))
                                          ]
+              
+              print('Image ROI points:')
+              print(self.roi) 
+              print('Image ROI bounding box:')
+              print(self.roi_box)               
+
               if show_roi:
                 while True:
                   cv.imshow('Selected ROI', roi_image)  
@@ -362,14 +380,19 @@ class ImageOperations:
       cv.destroyAllWindows()
   
   def warp(self):
-
+    ''' 
+    Apply perspective transform to the image based on the ROI points. 
+    
+    Returns: 
+    warped (numpy array): Warped image. 
+    '''
     def order_points(pts):
       pts = np.float32(pts)
       # initialzie a list of coordinates that will be ordered
       # such that the first entry in the list is the top-left,
       # the second entry is the top-right, the third is the
       # bottom-right, and the fourth is the bottom-left
-      rect = np.zeros((4, 2), dtype = "float32")
+      rect = np.zeros((4, 2), dtype = 'float32')
       # the top-left point will have the smallest sum, whereas
       # the bottom-right point will have the largest sum
       s = pts.sum(axis = 1)
@@ -386,7 +409,7 @@ class ImageOperations:
 
     # obtain a consistent order of the points and unpack them
     # individually
-    rect = order_points(self.original_im_ROI_points)
+    rect = order_points(self.roi)
     (tl, tr, br, bl) = rect
     # compute the width of the new image, which will be the
     # maximum distance between bottom-right and bottom-left
@@ -401,7 +424,7 @@ class ImageOperations:
     heightB = np.sqrt(((tl[0] - bl[0]) ** 2) + ((tl[1] - bl[1]) ** 2))
     maxHeight = max(int(heightA), int(heightB))
     # now that we have the dimensions of the new image, construct
-    # the set of destination points to obtain a "birds eye view",
+    # the set of destination points to obtain a 'birds eye view',
     # (i.e. top-down view) of the image, again specifying points
     # in the top-left, top-right, bottom-right, and bottom-left
     # order
@@ -409,7 +432,7 @@ class ImageOperations:
       [0, 0],
       [maxWidth - 1, 0],
       [maxWidth - 1, maxHeight - 1],
-      [0, maxHeight - 1]], dtype = "float32")
+      [0, maxHeight - 1]], dtype = 'float32')
     # compute the perspective transform matrix and then apply it
     M = cv.getPerspectiveTransform(rect, dst)
     warped = cv.warpPerspective(self.image, M, (maxWidth, maxHeight))
