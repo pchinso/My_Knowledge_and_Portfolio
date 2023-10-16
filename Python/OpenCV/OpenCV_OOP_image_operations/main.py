@@ -79,17 +79,13 @@ if __name__ =="__main__":
   image.restore_image()
 
   # Crop a ROI
-  image.crop_roi(show_roi=True)
+  image.crop_roi()
 
-  print(image.original_im_ROI_points)
+  print(image.roi)
+  print(image.roi_box)
 
-  # ROI values
-  # image size variables
-  print('Image Height: ',image.height) 
-  print('Image Widht: ',image.width) 
-  print('Image Channels: ',image.channels) 
-
-  # image.save_image() Save ROI as image copy
+  # Warp a image ROI
+  warped = image.warp()
 
   image.restore_image()
 
