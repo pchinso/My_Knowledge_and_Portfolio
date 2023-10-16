@@ -127,6 +127,7 @@ class ImageOperations:
 
     show_image = default False
     '''
+    print('Convert an image to grayscale...')
 
     try:
 
@@ -147,7 +148,7 @@ class ImageOperations:
 
   def resize_px(self, height = 0, width = 0,  interp = 1, show_image = False):
     '''
-    Image size resize by absolute finel size
+    Image size resize by absolute final size
     Resized image keeps original aspect ratio by default providing 1 parameter,
     you could modify aspect ratio providing both height, width
 
@@ -168,6 +169,7 @@ class ImageOperations:
     show_image = default False
 
     '''
+    print('Image size resize by absolute final size...')
 
     if height * width > 0: 
 
@@ -230,6 +232,7 @@ class ImageOperations:
     show_image = default False
 
     '''
+    print('Percentual image size resize by percent...')
 
     if height * width > 0: 
 
@@ -284,7 +287,9 @@ class ImageOperations:
       Saves: 
       self.roi (list): ROI points.
       self.roi_box (list): Bounding box of ROI.
-      '''      
+      '''
+      print('Crop a region of interest for an image (ROI)...')
+
       points_fit = []
       self.cropping = False
 
@@ -380,13 +385,17 @@ class ImageOperations:
           
       cv.destroyAllWindows()
   
-  def warp(self):
+  def warp(self, show_warp_image = True):
     ''' 
     Apply perspective transform to the image based on the ROI points. 
+    
+    Parameters
+    show_warp_image (bool): Show Warped image. Default is True.
     
     Returns: 
     warped (numpy array): Warped image. 
     '''
+    print('ROI perspective transformation...')
     def order_points(pts):
       pts = np.float32(pts)
       # initialzie a list of coordinates that will be ordered
@@ -438,6 +447,13 @@ class ImageOperations:
     M = cv.getPerspectiveTransform(rect, dst)
     warped = cv.warpPerspective(self.image, M, (maxWidth, maxHeight))
     # return the warped image
+    
+    if show_warp_image:
+      print('Show ROI image Warped...')
+      cv.imshow('Warped ROI',warped)
+      cv.waitKey(0)
+      cv.destroyAllWindows()      
+
     return warped    
   
   
