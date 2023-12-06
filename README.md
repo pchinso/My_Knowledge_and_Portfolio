@@ -102,20 +102,43 @@ git log --pretty=format:"| %s | %cd |"
 
 | Commit                                                                                                                                                                          |              Date              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------: |
-| modifications for Ubutu setup local  paths and normpath | Thu Sep 14 09:47:05 2023 +0200 |
-| Create a module version to be imported | Thu Sep 14 09:42:07 2023 +0200 |
-| add relative path images for header and profile | Thu Sep 14 09:22:41 2023 +0200 |
-| 2304_Clasify_closer_images_to_WP From Waypoints dronedeploy file clasify images closest waypoint image to folder | Thu Apr 20 17:58:22 2023 +0200 |
-| gitignore Python inputs ans results dirs | Thu Apr 20 17:55:53 2023 +0200 |
-| add a image operation method extract exif GPS data as dictionary | Thu Apr 20 11:58:53 2023 +0200 |
-| Powershell script robocopy backup Documents Samsung Laptop | Sun Mar 5 15:22:29 2023 +0100 |
-| Pine64 NAS online project | Sat Mar 4 09:44:49 2023 +0100 |
-| ESP8266 initial web server test | Sun Feb 19 09:32:56 2023 +0100 |
+| crop roi and warp methods docstrings | Mon Oct 16 12:31:25 2023 +0200 |
+| integrate warp as method | Wed Oct 11 14:07:34 2023 +0200 |
+| add crop_roi(self, show_roi = True, self_image_update = False) | Wed Oct 11 13:42:12 2023 +0200 |
+| warp example 2 with imageoprations | Wed Oct 11 13:30:00 2023 +0200 |
+| reference warp example | Wed Oct 11 13:26:26 2023 +0200 |
+| warp example with image operations | Wed Oct 11 13:26:06 2023 +0200 |
+| check image size to provide adecuate scaler | Wed Oct 11 13:25:00 2023 +0200 |
+| image to test warping | Wed Oct 11 13:21:39 2023 +0200 |
+| delete roi test | Wed Oct 11 08:51:55 2023 +0200 |
+|   Example Crop a ROI | Tue Oct 10 18:07:51 2023 +0200 |
+| Save ROi Points in orginal image Updated image show updated image | Tue Oct 10 17:58:02 2023 +0200 |
+| method Roi Crop | Tue Oct 10 17:18:20 2023 +0200 |
+| main roi for roi testing | Tue Oct 10 15:42:59 2023 +0200 |
+| save_image method | Tue Oct 10 15:36:16 2023 +0200 |
+| updated readme with in place method explanation and variables main with examples | Tue Oct 10 12:45:36 2023 +0200 |
+| image method aplied in place add restore image to revert changes | Tue Oct 10 12:03:03 2023 +0200 |
+| big image to test fitting | Mon Oct 9 15:40:51 2023 +0200 |
+| screeninfo add get display size | Mon Oct 9 15:40:28 2023 +0200 |
+| screeninfo add get display size image sizes image.w .h image fit image to show crop Roi method | Mon Oct 9 15:40:18 2023 +0200 |
+| 4 To GrayScale via checkbox 5 Crop ROI (works but not full debbuged) | Tue Sep 19 14:53:17 2023 +0200 |
+| add to_grayscale image operation Refactor PEP8 Add coments | Thu Sep 14 17:24:36 2023 +0200 |
+| New Repo: OpenCv Streamlit app Simple app that enable OpenCV functions on StreamLit app. | Thu Sep 14 12:50:05 2023 +0200 |
+| Timeline progress actualization | Thu Sep 14 10:23:26 2023 +0200 |
+| modifications for Ubutu setup local  paths and normpath                                                                                                                         | Thu Sep 14 09:47:05 2023 +0200 |
+| Create a module version to be imported                                                                                                                                          | Thu Sep 14 09:42:07 2023 +0200 |
+| add relative path images for header and profile                                                                                                                                 | Thu Sep 14 09:22:41 2023 +0200 |
+| 2304_Clasify_closer_images_to_WP From Waypoints dronedeploy file clasify images closest waypoint image to folder                                                                | Thu Apr 20 17:58:22 2023 +0200 |
+| gitignore Python inputs ans results dirs                                                                                                                                        | Thu Apr 20 17:55:53 2023 +0200 |
+| add a image operation method extract exif GPS data as dictionary                                                                                                                | Thu Apr 20 11:58:53 2023 +0200 |
+| Powershell script robocopy backup Documents Samsung Laptop                                                                                                                      | Sun Mar 5 15:22:29 2023 +0100 |
+| Pine64 NAS online project                                                                                                                                                       | Sat Mar 4 09:44:49 2023 +0100 |
+| ESP8266 initial web server test                                                                                                                                                 | Sun Feb 19 09:32:56 2023 +0100 |
 | Linux realated configurations on windows.                                                                                                                                       | Fri Feb 17 07:21:40 2023 +0100 |
 | Template project for Micropython VSCode and Pymaker on ESP8266 board                                                                                                            | Thu Feb 16 07:06:40 2023 +0100 |
 | ESP8266 template [ok] Blink tested with Samsung laptop                                                                                                                          | Tue Feb 14 17:39:22 2023 +0100 |
-| Remove initial try block, now image read is included at__init__ remove unused imports                                                                                     | Mon Feb 13 08:00:54 2023 +0100 |
-| cv.imread(self.path) at class__init__ show image method                                                                                                                   | Mon Feb 13 07:22:48 2023 +0100 |
+| Remove initial try block, now image read is included at__init__ remove unused imports                                                                                           | Mon Feb 13 08:00:54 2023 +0100 |
+| cv.imread(self.path) at class__init__ show image method                                                                                                                         | Mon Feb 13 07:22:48 2023 +0100 |
 | Objects Oriented class to perform OpenCV image operations with built-in methods                                                                                                 | Sun Feb 12 11:19:31 2023 +0100 |
 | shell script to rebuild requirements.txt file remove initial pipenv files at template folder detailed steps for pipenv template activation template requirements.txt for openCV | Sat Feb 11 11:10:40 2023 +0100 |
 | md linter error trailing                                                                                                                                                        | Fri Feb 10 17:50:13 2023 +0100 |
