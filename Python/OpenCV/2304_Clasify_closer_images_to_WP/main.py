@@ -2,7 +2,7 @@ import cv2 as cv
 import os
 import shutil
 import sys
-sys.path.append(r'C:\Users\chins\Documents\My_Knowledge_and_Portfolio\Python\OpenCV\OpenCV_OOP_image_operations')
+sys.path.append(r'F:\My_Knowledge_and_Portfolio\Python\OpenCv\OpenCV_OOP_image_operations')
 
 import pandas as pd
 from math import radians, sin, cos, sqrt, atan2
@@ -38,7 +38,7 @@ if __name__ =="__main__":
 
   cwd = os.getcwd()
 
-  WP = pd.read_csv(os.path.join(cwd, r'input\DroneDeployDownload_2023_04_20_160403.csv'))
+  WP = pd.read_csv(os.path.join(cwd, r'input\DroneDeployDownload_2023_04_21_090413.csv'))
   WP = WP.loc[:, ['AnnotationDescription','AnnotationLatAndLong']]
   WP[['latitude', 'longitude']] = WP['AnnotationLatAndLong'].str.split(', ', expand=True)
   WP = WP.loc[:,['AnnotationDescription','latitude', 'longitude']]
@@ -46,8 +46,7 @@ if __name__ =="__main__":
   WP['latitude'] = WP['latitude'].astype(float)
   WP['longitude'] = WP['longitude'].astype(float)
 
-  image_paths = list_input_images(os.path.join(cwd, r'input\DJI_images'))
-  print(os.path.join(cwd, r'input\DJI_images'))
+  image_paths = list_input_images(os.path.join(cwd, r'input\DJI'))
 
   for image in image_paths:
     photo = ImageOperations(image)
