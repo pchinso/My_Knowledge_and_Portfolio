@@ -2,7 +2,11 @@ import cv2 as cv
 import os
 import shutil
 import sys
-sys.path.append(r'F:\My_Knowledge_and_Portfolio\Python\OpenCv\OpenCV_OOP_image_operations')
+
+# for Windows
+# sys.path.append(r'C:\Users\chins\Documents\My_Knowledge_and_Portfolio\Python\OpenCV\OpenCV_OOP_image_operations')
+# for Ubuntu
+sys.path.append(r'/home/pcs/Documents/Python/OpenCV_OOP_image_operations')
 
 import pandas as pd
 from math import radians, sin, cos, sqrt, atan2
@@ -12,6 +16,7 @@ from imageoperations import ImageOperations
 def list_input_images(directory):
   # Create an empty list to store the file paths
   image_paths = []
+  print('dir:', directory)
 
   # Loop through all files in the directory
   for filename in os.listdir(directory):
@@ -37,6 +42,10 @@ def haversine(lat1, lon1, lat2, lon2):
 if __name__ =="__main__":
 
   cwd = os.getcwd()
+  print('current: ', cwd)
+  input_file_path = r'input/DroneDeployDownload_2023_04_21_090413.csv'
+  #/home/pcs/Documents/Python/2309_Clasify_closer_images_to_WP/input/DroneDeployDownload_2023_04_21_090413.csv
+  csv_full_input_path = os.path.normpath(os.path.join(os.getcwd(), input_file_path))
 
   WP = pd.read_csv(os.path.join(cwd, r'input\DroneDeployDownload_2023_04_21_090413.csv'))
   WP = WP.loc[:, ['AnnotationDescription','AnnotationLatAndLong']]
