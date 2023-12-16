@@ -13,6 +13,9 @@
 *tempCodeRunnerFile*
 *.pyc
 
+# venv folder
+**/.venv*/**
+
 # Python inputs ans results dirs
 **/results/**
 **/input/**
