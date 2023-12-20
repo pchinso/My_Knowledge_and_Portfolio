@@ -12,6 +12,7 @@
 # Python Compiled executables and relative obj files
 *tempCodeRunnerFile*
 *.pyc
+__pycache__/
 
 # venv folder
 **/.venv*/**
@@ -66,4 +67,3 @@ yarn-error.log*
 
 .web
 
-__pycache__/
