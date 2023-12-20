@@ -18,23 +18,6 @@ def sidebar_header() -> rx.Component:
             height="2em",
         ),
         rx.spacer(),
-        # Link to Reflex GitHub repo.
-        rx.link(
-            rx.center(
-                rx.image(
-                    src="/github.svg",
-                    height="3em",
-                    padding="0.5em",
-                ),
-                box_shadow=styles.box_shadow,
-                bg="transparent",
-                border_radius=styles.border_radius,
-                _hover={
-                    "bg": styles.accent_color,
-                },
-            ),
-            href="https://github.com/reflex-dev/reflex",
-        ),
         width="100%",
         border_bottom=styles.border,
         padding="1em",
@@ -50,12 +33,8 @@ def sidebar_footer() -> rx.Component:
     return rx.hstack(
         rx.spacer(),
         rx.link(
-            rx.text("Docs"),
-            href="https://reflex.dev/docs/getting-started/introduction/",
-        ),
-        rx.link(
-            rx.text("Blog"),
-            href="https://reflex.dev/blog/",
+            rx.text("CoxEnergy"),
+            href="https://www.coxenergy.es/",
         ),
         width="100%",
         border_top=styles.border,
@@ -125,7 +104,7 @@ def sidebar() -> rx.Component:
                 *[
                     sidebar_item(
                         text=page.get("title", page["route"].strip("/").capitalize()),
-                        icon=page.get("image", "/github.svg"),
+                        icon=page.get("image", "/upload.png"),
                         url=page["route"],
                     )
                     for page in get_decorated_pages()
